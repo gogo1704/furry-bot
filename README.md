@@ -9,8 +9,6 @@ Simple discord bot! <br>
   <li>Spambot</li>
   <li>Youtube player</li>
   <li>Soundcloud player</li>
-  <li>Soundcloud player</li>
-  <li>Soundcloud player</li>
   <li>Chatowa gra multiplayer: PvP duel</li>
   <li>Task manager</li>
   <li>Calendar</li>
