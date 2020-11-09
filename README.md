@@ -11,7 +11,7 @@ Simple discord bot! <br>
   <li>Soundcloud player</li>
   <li>Soundcloud player</li>
   <li>Soundcloud player</li>
-  <li>Chatowa gra multiplayer: Pvp duel</li>
+  <li>Chatowa gra multiplayer: PvP duel</li>
   <li>Task manager</li>
   <li>Calendar</li>
 </ul>
