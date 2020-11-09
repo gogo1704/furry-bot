@@ -1,5 +1,5 @@
 # Nie wolno podawać papugom awokado, rabarbaru, cebuli, czosnku, pora i szczypiorku.
-Simple discord bot! <br>
+Simple Discord bot! <br>
 # TODO: 
 <ul>
   <li>Restart</li>
