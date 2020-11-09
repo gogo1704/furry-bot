@@ -1,4 +1,4 @@
 # furry-bot
-Simple discord bot! \n
-Me too! \n
+Simple discord bot! <br>
+Me too! <br>
 Testowa zmiana 2!
