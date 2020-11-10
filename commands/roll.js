@@ -1,7 +1,7 @@
 const { prefix } = require("../config.json");
 module.exports = {
 	name: "roll",
-	description: "Rolls the dice. Ex. \`;roll 2d6\`",
+	description: `Rolls the dice. Ex. \`${prefix}roll 2d6\``,
 	args: true,
 	usage: "<number>|<dice>d<sides>",
 	execute(message, args) {
