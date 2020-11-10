@@ -1,4 +1,4 @@
-let log = require("../guestbook.json");
+let log = require("../local/guestbook.json");
 const fs = require("fs");
 module.exports = {
 	name: "write",
@@ -18,12 +18,12 @@ module.exports = {
 			}
 			log.push(line);
 			try {
-				fs.writeFileSync("../guestbook.json", JSON.stringify(log));
+				fs.writeFileSync("./local/guestbook.json", JSON.stringify(log));
 			} catch(error) {
 				console.error(error);
 			}
 			
 
 		}
-	},
+	}
 };

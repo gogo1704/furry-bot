@@ -4,7 +4,7 @@ console.log("Initializing...");
 // require
 console.log("Requiring...");
 const fs = require("fs");
-const {prefix,token} = require("./config.json");
+const {prefix,token} = require("./local/config.json");
 const Discord = require("discord.js");
 
 
