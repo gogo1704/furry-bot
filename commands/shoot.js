@@ -10,7 +10,7 @@ module.exports = {
                         message.channel.send(`You've shot ${user}!`);
                 }
         } else {
-          message.channel.send[[("Who do you want to kill?");
+          message.channel.send("Who do you want to kill?");
         }
     }
 };
