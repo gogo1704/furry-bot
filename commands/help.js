@@ -1,4 +1,4 @@
-const { prefix } = require("../config.json");
+const { prefix } = require("../local/config.json");
 module.exports = {
 	name: "help",
 	description: "Lists all commands or show specific information about a command",

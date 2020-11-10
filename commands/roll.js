@@ -1,4 +1,4 @@
-const { prefix } = require("../config.json");
+const { prefix } = require("../local/config.json");
 module.exports = {
 	name: "roll",
 	description: `Rolls the dice. Ex. \`${prefix}roll 2d6\``,
