@@ -34,7 +34,7 @@ client.on("message", message => {
 	const commandName = args.shift().toLowerCase();
 
 	// check if command exists
-	if (!client.commands.has(commandName)) return client.commands.get("help").execute(message,"");
+	if (!client.commands.has(commandName)) return message.channel.send("Invalid command. Use \`;help\` to view list of commands.");
 
 	const command = client.commands.get(commandName);
 	// check for required arguments
