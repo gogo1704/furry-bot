@@ -8,7 +8,7 @@ module.exports = {
 		if (!isNaN(args[0])) {
 			return message.channel.send(Math.floor((Math.random() * args[0]) + 1));
 		} else if (/^d\d+$/.test(args[0])) {
-			return message.channel.send(Math.floor((Math.random() * args[0].split("d")[0]) + 1));
+			return message.channel.send(Math.floor((Math.random() * args[0].substring(1) + 1)));
 		} else if (/^\d+d\d+$/.test(args[0])) {
 			const dice = parseInt(args[0].split("d")[0]);
 			const sides = parseInt(args[0].split("d")[1]);
