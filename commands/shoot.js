@@ -6,12 +6,11 @@ module.exports = {
     execute(message, args) {
         const user = message.mentions.users.first();
         if (user) {
-            const member = message.guild.member(user);
-                if (member) {
+                if (message.guild.member(user)) {
                         message.channel.send(`You've shot ${user}!`);
                 }
         } else {
-          message.channel.send("Who do you want to kill?");
+          message.channel.send[[("Who do you want to kill?");
         }
     }
 };
