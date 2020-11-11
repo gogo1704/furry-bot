@@ -7,7 +7,7 @@ module.exports = {
 	
 	execute(message, args) {
 		let filtered;
-		message.channel.messages.fetch({ limit: 40 })				// Get 40 last  messages
+		message.channel.messages.fetch({ limit: 40 })				// Get 40 last messages
 		
 			.then(messages => filtered = messages
 			.filter(m => m.author.username === message.author.username &&	// Filter messages for username
