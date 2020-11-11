@@ -4,7 +4,7 @@ console.log("Initializing...");
 // require
 console.log("Requiring...");
 const fs = require("fs");
-const {prefix,token} = require("./local/config.json");
+const {prefix,token, welcomeChannelID} = require("./local/config.json");
 const Discord = require("discord.js");
 
 
@@ -25,7 +25,7 @@ client.once("ready", () => {
 	console.log("Ready");
 });
 
-// message response
+// message listener
 client.on("message", message => {
 	// check if message is a command
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
@@ -56,5 +56,25 @@ client.on("message", message => {
 	}
 	
 });
+
+// member join listener
+client.on("guildMemberAdd", member => {
+	const channel = member.guild.channels.cache.get(welcomeChannelID);
+	if (!channel) return console.log("no channel");
+		channel.send(`Welcome to the server, ${member}. Have fun!`)
+			.catch(console.error);
+});
+
+// member remove listener
+client.on("guildMemberRemove", member => {
+	const channel = member.guild.channels.cache.get(welcomeChannelID);
+	if (!channel) return console.log("no channel");
+		channel.send(`${member} left us. We will miss him!`)
+			.catch(console.error);
+});
+
+		
+
+// login
 console.log("Logging in...")
 client.login(token);
