@@ -23,6 +23,9 @@ module.exports = {
 					console.error(error);
 				}
             }
+                if (message.guild.member(user)) {
+                        message.channel.send(`You've shot ${user}!`);
+                }
         } else {
           message.channel.send("Who do you want to kill?");
         }

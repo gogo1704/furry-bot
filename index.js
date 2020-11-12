@@ -3,17 +3,25 @@ console.log("Initializing...");
 
 // require
 console.log("Requiring...");
-const fs = require("fs");
-const {prefix,token} = require("./local/config.json");
 const Discord = require("discord.js");
+const fs = require("fs");
 
+// config
+const defaultConfig = require("./default-config.json");
+const config = require("./local/config.json");
+
+for (const setting in defaultConfig) {
+	if(!config[setting]) {
+		config[setting] = defaultConfig[setting];
+	}
+}
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
-
+client.config = config;
 
 // search for command files
-console.log("Searching for commands...");
+console.log("Loading commands...");
 const commandFiles = fs.readdirSync("./commands").filter(file => file.endsWith(".js"));
 for (const file of commandFiles) {
 	const command = require(`./commands/${file}`);
@@ -25,12 +33,12 @@ client.once("ready", () => {
 	console.log("Ready");
 });
 
-// message response
+// message listener
 client.on("message", message => {
 	// check if message is a command
-	if (!message.content.startsWith(prefix) || message.author.bot) return;
+	if (!message.content.startsWith(config.prefix) || message.author.bot) return;
 
-	const args = message.content.slice(prefix.length).trim().split(/ +/);
+	const args = message.content.slice(config.prefix.length).trim().split(/ +/);
 	const commandName = args.shift().toLowerCase();
 
 	// check if command exists
@@ -41,7 +49,7 @@ client.on("message", message => {
 	if (command.args && !args.length) {
 		let reply = `You didn't provide any arguments!`;
 		if (command.usage) {
-			reply += `\nUsage: \`${prefix}${command.name} ${command.usage}\``;
+			reply += `\nUsage: \`${config.prefix}${command.name} ${command.usage}\``;
 		}
 
 		return message.channel.send(reply);
@@ -56,5 +64,25 @@ client.on("message", message => {
 	}
 	
 });
+
+// member join listener
+client.on("guildMemberAdd", member => {
+	const channel = member.guild.channels.cache.get(config.welcomeChannelID);
+	if (!channel) return;
+		channel.send(`Welcome to the server, ${member}. Have fun!`)
+			.catch(console.error);
+});
+
+// member remove listener
+client.on("guildMemberRemove", member => {
+	const channel = member.guild.channels.cache.get(config.welcomeChannelID);
+	if (!channel) return console.log("no channel");
+		channel.send(`${member} left us. We will miss him!`)
+			.catch(console.error);
+});
+
+		
+
+// login
 console.log("Logging in...")
-client.login(token);
+client.login(config.token);

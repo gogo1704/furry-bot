@@ -1,15 +1,13 @@
 # Nie wolno podawać papugom awokado, rabarbaru, cebuli, czosnku, pora i szczypiorku.
 Simple Discord bot! <br>
-# TODO: 
-<ul>
-  <li>Restart</li>
-  <li>Command cooldown</li>
-  <li>Character limit</li>
-  <li>Rock Paper Scissors</li>
-  <li>Spambot</li>
-  <li>Youtube player</li>
-  <li>Soundcloud player</li>
-  <li>Chatowa gra multiplayer: PvP duel</li>
-  <li>Task manager</li>
-  <li>Calendar</li>
-</ul>
+## TODO: 
+- [ ] Command cooldown
+- [ ] Character limit
+- [ ] Automatic tester
+- [ ] Remote server
+- [ ] Status messages
+## References:
+- https://discord.js.org
+- https://discordjs.guide
+- https://nodejs.org/en/docs/
+- https://developer.mozilla.org/en-US/docs/Web/javascript

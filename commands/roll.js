@@ -1,10 +1,10 @@
-const { prefix } = require("../local/config.json");
 module.exports = {
 	name: "roll",
-	description: `Rolls the dice. Ex. \`${prefix}roll 2d6\``,
+	description: "Rolls the dice.",
 	args: true,
-	usage: "<number>|<dice>d<sides>",
+	usage: "<number> | [dice]d<sides>",
 	execute(message, args) {
+		const prefix = message.client.config.prefix;
 		if (!isNaN(args[0])) {
 			return message.channel.send(Math.floor((Math.random() * args[0]) + 1));
 		} else if (/^d\d+$/.test(args[0])) {
