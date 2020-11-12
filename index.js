@@ -68,7 +68,7 @@ client.on("message", message => {
 // member join listener
 client.on("guildMemberAdd", member => {
 	const channel = member.guild.channels.cache.get(config.welcomeChannelID);
-	if (!channel) return console.log("no channel");
+	if (!channel) return;
 		channel.send(`Welcome to the server, ${member}. Have fun!`)
 			.catch(console.error);
 });
