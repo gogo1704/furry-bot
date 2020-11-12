@@ -2,7 +2,7 @@ module.exports = {
 	name: "roll",
 	description: "Rolls the dice.",
 	args: true,
-	usage: "<number>|[dice]d<sides>",
+	usage: "<number> | [dice]d<sides>",
 	execute(message, args) {
 		const prefix = message.client.config.prefix;
 		if (!isNaN(args[0])) {
