@@ -5,6 +5,7 @@ Simple Discord bot! <br>
 - [ ] Character limit
 - [ ] Automatic tester
 - [ ] Remote server
+- [ ] Status messages
 ## References:
 - https://discord.js.org
 - https://discordjs.guide
