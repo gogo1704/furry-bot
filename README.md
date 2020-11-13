@@ -4,5 +4,5 @@ Simple Discord bot! <br>
 <ul>
   <li>Command cooldown</li>
   <li>Character limit</li>
-  <li>Automatic tester</li>
+  <li>Automatic tester</li>asdasdasdsdads
 </ul>
