@@ -45,6 +45,11 @@ client.on("message", message => {
 	if (!client.commands.has(commandName)) return message.channel.send("Invalid command. Use \`;help\` to view list of commands.");
 
 	const command = client.commands.get(commandName);
+
+    // check for permissions
+    const perm_list = message.channel.permissionsFor("775747660472516628").toArray();
+    if (!perm_list.includes('SEND_MESSAGES')) return console.log("Insufficient permissions on channel "+message.channel.name);
+
 	// check for required arguments
 	if (command.args && !args.length) {
 		let reply = `You didn't provide any arguments!`;
