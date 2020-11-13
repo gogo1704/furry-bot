@@ -3,6 +3,7 @@ module.exports = {
 	description: "Rolls the dice.",
 	args: true,
 	usage: "<number> | [dice]d<sides>",
+    allowPM: true,
 	execute(message, args) {
 		const prefix = message.client.config.prefix;
 		if (!isNaN(args[0])) {
