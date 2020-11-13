@@ -45,7 +45,7 @@ for (const file of commandFiles) {
 
 // When ready to work 
 client.once("ready", () => {
-	initMaxSteps++;
+	initSteps++;
 	console.log(`[${initSteps}/${initMaxSteps}] Ready!`);
 });
 
