@@ -1,11 +1,11 @@
 // Initialization
-let n = 1;		// Steps
-let m = 6;		// Max steps
+let initSteps = 1;		// Steps
+const initMaxSteps = 6;		// Max steps
 
-console.log(`\n[${n}/${m}] Initializing...\n`);
+console.log(`\n[${initSteps}/${initMaxSteps}] Initializing...\n`);
 
 // Reading map with require() entries and loading them...
-let req = new Map();
+const req = new Map();
 req.set("Discord", "discord.js");
 req.set("fs", "fs");
 req.set("defaultConfig", "./default-config.json");
@@ -17,8 +17,8 @@ req.forEach(function (value, key)  {
 });
 
 // If setting doesn't exist in config, load from default config
-n++;
-console.log(`\n[${n}/${m}] Reading config files...`);
+initSteps++;
+console.log(`\n[${initSteps}/${initMaxSteps}] Reading config files...`);
 for (const setting in defaultConfig) {
 	if(!config[setting]) {
 		console.log(`${setting} not found in config. Loading from default...`)
@@ -27,15 +27,15 @@ for (const setting in defaultConfig) {
 }
 
 // Create client objects
-n++;
-console.log(`\n[${n}/${m}] Creating client objects...`);
+initSteps++;
+console.log(`\n[${initSteps}/${initMaxSteps}] Creating client objects...`);
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 client.config = config;
 
 // Search for command files
-n++;
-console.log(`\n[${n}/${m}] Loading commands...`);
+initSteps++;
+console.log(`\n[${initSteps}/${initMaxSteps}] Loading commands...`);
 const commandFiles = fs.readdirSync("./commands").filter(file => file.endsWith(".js"));
 for (const file of commandFiles) {
 	const command = require(`./commands/${file}`);
@@ -45,8 +45,8 @@ for (const file of commandFiles) {
 
 // When ready to work 
 client.once("ready", () => {
-	n++;
-	console.log(`[${n}/${m}] Ready!`);
+	initSteps++;
+	console.log(`[${initSteps}/${initMaxSteps}] Ready!`);
 });
 
 // Listen for messages
@@ -61,6 +61,19 @@ client.on("message", message => {
 	if (!client.commands.has(commandName)) return message.channel.send("Invalid command. Use \`;help\` to view list of commands.");
 
 	const command = client.commands.get(commandName);
+
+    // check for pm
+    if (message.guild === null && !command.allowPM) {
+        return message.author.send("Command not allowed for PMs, sorry!");
+    }
+
+    // check for permissions
+    if (message.guild != null) {
+        const perm_list = message.channel.permissionsFor(message.guild.me).toArray();
+        if (!perm_list.includes('SEND_MESSAGES')) return console.log("Insufficient permissions on channel "+message.channel.name);
+    }
+
+
 	// Check for required arguments
 	if (command.args && !args.length) {
 		let reply = `You didn't provide any arguments!`;
@@ -99,7 +112,8 @@ client.on("guildMemberRemove", member => {
 
 		
 
+
 // Login with token
-n++;
-console.log(`\n[${n}/${m}] Logging in...`)
+initSteps++;
+console.log(`\n[${initSteps}/${initMaxSteps}] Logging in...`)
 client.login(config.token);
