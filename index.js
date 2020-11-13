@@ -1,51 +1,67 @@
 // Initialization
-console.log("Initializing...");
+let n = 1;		// Steps
+let m = 6;		// Max steps
 
-// require
-console.log("Requiring...");
-const Discord = require("discord.js");
-const fs = require("fs");
+console.log(`\n[${n}/${m}] Initializing...\n`);
 
-// config
-const defaultConfig = require("./default-config.json");
-const config = require("./local/config.json");
+// Reading map with require() entries and loading them...
+let req = new Map();
+req.set("Discord", "discord.js");
+req.set("fs", "fs");
+req.set("defaultConfig", "./default-config.json");
+req.set("config", "./local/config.json");
 
+req.forEach(function (value, key)  {
+	 console.log(`Requiring ${value} as ${key}...`);
+	 eval(`${key} = require(\"${value}\")`);
+});
+
+// If setting doesn't exist in config, load from default config
+n++;
+console.log(`\n[${n}/${m}] Reading config files...`);
 for (const setting in defaultConfig) {
 	if(!config[setting]) {
+		console.log(`${setting} not found in config. Loading from default...`)
 		config[setting] = defaultConfig[setting];
 	}
 }
 
+// Create client objects
+n++;
+console.log(`\n[${n}/${m}] Creating client objects...`);
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 client.config = config;
 
-// search for command files
-console.log("Loading commands...");
+// Search for command files
+n++;
+console.log(`\n[${n}/${m}] Loading commands...`);
 const commandFiles = fs.readdirSync("./commands").filter(file => file.endsWith(".js"));
 for (const file of commandFiles) {
 	const command = require(`./commands/${file}`);
 	client.commands.set(command.name, command);
+	console.log(`  ${file},`);
 }
 
-// ready
+// When ready to work 
 client.once("ready", () => {
-	console.log("Ready");
+	n++;
+	console.log(`[${n}/${m}] Ready!`);
 });
 
-// message listener
+// Listen for messages
 client.on("message", message => {
-	// check if message is a command
+	// Check if message is a command
 	if (!message.content.startsWith(config.prefix) || message.author.bot) return;
 
 	const args = message.content.slice(config.prefix.length).trim().split(/ +/);
 	const commandName = args.shift().toLowerCase();
 
-	// check if command exists
+	// Check if command exists
 	if (!client.commands.has(commandName)) return message.channel.send("Invalid command. Use \`;help\` to view list of commands.");
 
 	const command = client.commands.get(commandName);
-	// check for required arguments
+	// Check for required arguments
 	if (command.args && !args.length) {
 		let reply = `You didn't provide any arguments!`;
 		if (command.usage) {
@@ -83,6 +99,7 @@ client.on("guildMemberRemove", member => {
 
 		
 
-// login
-console.log("Logging in...")
+// Login with token
+n++;
+console.log(`\n[${n}/${m}] Logging in...`)
 client.login(config.token);
