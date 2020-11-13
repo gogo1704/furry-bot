@@ -2,6 +2,7 @@ const Discord = require("discord.js");
 module.exports = {
 	name: "embed",
 	description: "Sends an embed. (used for debbuging)",
+    allowPM: true,
 	execute(message, args) {
 		const embed = new Discord.MessageEmbed()
 			//.setColor('#FFFF00')

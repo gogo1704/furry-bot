@@ -1,6 +1,7 @@
 module.exports = {
 	name: "up",
 	description: "Execute command above once again.",
+    allowPM: true,
 	execute(message, args) {
 		const prefix = message.client.config.prefix;
 		const regex = new RegExp(`^${prefix}.*`);

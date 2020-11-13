@@ -61,6 +61,19 @@ client.on("message", message => {
 	if (!client.commands.has(commandName)) return message.channel.send("Invalid command. Use \`;help\` to view list of commands.");
 
 	const command = client.commands.get(commandName);
+
+    // check for pm
+    if (message.guild === null && !command.allowPM) {
+        return message.author.send("Command not allowed for PMs, sorry!");
+    }
+
+    // check for permissions
+    if (message.guild != null) {
+        const perm_list = message.channel.permissionsFor(message.guild.me).toArray();
+        if (!perm_list.includes('SEND_MESSAGES')) return console.log("Insufficient permissions on channel "+message.channel.name);
+    }
+
+
 	// Check for required arguments
 	if (command.args && !args.length) {
 		let reply = `You didn't provide any arguments!`;
@@ -98,6 +111,7 @@ client.on("guildMemberRemove", member => {
 });
 
 		
+
 
 // Login with token
 initSteps++;

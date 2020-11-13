@@ -2,6 +2,7 @@ module.exports = {
 	name: "help",
 	description: "Lists all commands or show specific information about a command",
 	usage: "[command name]",
+    allowPM: true,
 	execute(message, args) {
 		const prefix = message.client.config.prefix;
 		const data = [];
