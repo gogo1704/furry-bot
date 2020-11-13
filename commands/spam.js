@@ -1,6 +1,6 @@
 module.exports = {
-	name: "spam",
-	description: "Spams custom message to another user",
+    name: "spam",
+    description: "Spams custom message to another user",
     usage: '<message> <@user> <number>',
 	execute(message, args) {
         // defining
