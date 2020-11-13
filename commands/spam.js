@@ -9,7 +9,7 @@ module.exports = {
         const spam_num = parseInt(args[args.length-1]);
 
         // checking
-        if (spam_msg == undefined) return message.channel.send("Something wrong with your message");
+        if (spam_msg == undefined) return message.channel.send("Something's wrong with your message");
         if (spam_usr == undefined) return message.channel.send("Can't find user");
         if (isNaN(spam_num)) return message.channel.send("Number must be a number");
         if (spam_num<=0) return message.channel.send("Number must be higher than 0");
