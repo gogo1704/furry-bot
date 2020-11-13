@@ -4,7 +4,7 @@ module.exports = {
     name: "shoot",
     description: "Shoot a targeted user.",
     args: true,
-    usage: "<user>",
+    usage: "<@user>",
     execute(message, args) {
         const user = message.mentions.users.first();
         if (user) {
