@@ -9,6 +9,7 @@ const fs = require("fs");
 // config
 const defaultConfig = require("./default-config.json");
 const config = require("./local/config.json");
+const forbidden = require("./local/forbidden-commands.json");
 
 for (const setting in defaultConfig) {
 	if(!config[setting]) {
@@ -46,9 +47,21 @@ client.on("message", message => {
 
 	const command = client.commands.get(commandName);
 
+    // check for pm
+    if (message.guild === null) {
+        for (let i=0; i<forbidden.length; i++)
+            {
+                if (commandName.includes(forbidden[i])) {
+                    return message.author.send("Command not allowed on PMs");
+                }
+            }
+    }
+
     // check for permissions
-    const perm_list = message.channel.permissionsFor("775747660472516628").toArray();
-    if (!perm_list.includes('SEND_MESSAGES')) return console.log("Insufficient permissions on channel "+message.channel.name);
+    if (message.guild != null) {
+        const perm_list = message.channel.permissionsFor("775747660472516628").toArray();
+        if (!perm_list.includes('SEND_MESSAGES')) return console.log("Insufficient permissions on channel "+message.channel.name);
+    }
 
 	// check for required arguments
 	if (command.args && !args.length) {
