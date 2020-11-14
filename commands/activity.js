@@ -8,7 +8,7 @@ module.exports = {
     
 	execute(message, args) {
 
-		message.client.user.setActivity("");			// This sometimes helps if activity bugs or lags
+		message.client.user.setActivity("");			// This sometimes helps if activity bugs or lags. It deletes activity on restarting bot, but not on reload
 		message.client.user.setActivity(args.slice(1).join(" "), { type: args[0].toUpperCase() });
 		
 	}
