@@ -2,7 +2,6 @@
 Simple Discord bot!
 ## TODO: 
 - [ ] Command cooldown
-- [ ] Character limit
 - [ ] Automatic tester
 - [ ] Remote server
 - [x] Status messages
