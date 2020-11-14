@@ -2,6 +2,7 @@ module.exports = {
     name: "spam",
     description: "Spams custom message to another user",
     usage: '<message> <@user> <number>',
+    cooldown: 600,
 	execute(message, args) {
         // defining
         const spam_msg = args.slice(0, args.length-2).join(" ");

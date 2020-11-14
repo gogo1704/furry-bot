@@ -18,6 +18,7 @@ module.exports = {
 	name: "write",
 	description: "Write-only notepad that allows to save stuff for later.",
 	usage: "[sentence]",
+	cooldown: 10,
 	execute(message, args) {
 		if (!args.length) {
 			let doc = "";

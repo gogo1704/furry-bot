@@ -5,7 +5,7 @@ module.exports = {
 	args: true,
 	usage: `"playing | streaming | listening | watching | competing" "string"`,
     allowPM: true,
-    
+    cooldown: 10,
 	execute(message, args) {
 
 		message.client.user.setActivity("");			// This sometimes helps if activity bugs or lags. It deletes activity on restarting bot, but not on reload

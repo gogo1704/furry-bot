@@ -18,6 +18,7 @@ module.exports = {
     name: "shoot",
     description: "Shoot a targeted user.",
     args: true,
+    cooldown: 10,
     usage: "<@user>",
     execute(message, args) {
         const user = message.mentions.users.first();
