@@ -1,11 +1,11 @@
 # Nie wolno podawać papugom awokado, rabarbaru, cebuli, czosnku, pora i szczypiorku.
-Simple Discord bot! <br>
+Simple Discord bot!
 ## TODO: 
 - [ ] Command cooldown
 - [ ] Character limit
 - [ ] Automatic tester
 - [ ] Remote server
-- [ ] Status messages
+- [x] Status messages
 ## References:
 - https://discord.js.org
 - https://discordjs.guide
