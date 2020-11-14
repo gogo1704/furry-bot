@@ -1,4 +1,8 @@
 {
 	"prefix": ";",
-	"token": ""
+	"token": "",
+	"welcomeChannelID": "",
+	"nice":"69",
+	"elite":"1337",
+	"embedColor":"#202225"
 }
