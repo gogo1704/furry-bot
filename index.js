@@ -89,7 +89,7 @@ client.on("message", message => {
 		command.execute(message, args);
 	} catch (error) {
 		console.error(error);
-		message.reply(`unexpected error! \n${error}`);
+		message.reply("unexpected error!");
 	}
 	
 });
