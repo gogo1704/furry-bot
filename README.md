@@ -10,3 +10,4 @@ Simple Discord bot!
 - https://discordjs.guide
 - https://nodejs.org/en/docs/
 - https://developer.mozilla.org/en-US/docs/Web/javascript
+TEST

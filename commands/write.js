@@ -3,26 +3,19 @@ const fs = require("fs");
 // We do this instead of require() now!
 const filecheck = require ("../modules/filecheck.js");
 
-const path = "./local/guestbook.json";
-filecheck.check(path, "[]");			// 1st arg: path to file, 2nd arg: if file not found, default string
-
-let log;
-fs.readFile(path, (err, data) => {
-	if(err)
-		throw err;
-	log = JSON.parse(data); 			// Read JSON file
- 
-});
-
 module.exports = {
 	name: "write",
 	description: "Write-only notepad that allows to save stuff for later.",
 	usage: "[sentence]",
 	cooldown: 10,
 	execute(message, args) {
+		const path = './local/hp.json';		
+		filecheck.check(path, '{}');			// 1st arg: path to file, 2nd arg: if file not found, default string
+  		const file = fs.readFileSync(path);
+		const parsedFile = JSON.parse(file);
 		if (!args.length) {
 			let doc = "";
-			for (const note of log) {
+			for (const note of parsedFile) {
 				doc += note + "\n";
 			}
 			message.channel.send(doc, { split: true } );
@@ -31,9 +24,9 @@ module.exports = {
 			for (const arg of args) {
 				line += arg+" ";
 			}
-			log.push(line);
+			parsedFile.push(line);
 			try {
-				fs.writeFileSync(path, JSON.stringify(log));
+				fs.writeFileSync(path, JSON.stringify(parsedFile));
 			} catch(error) {
 				console.error(error);
 			}
