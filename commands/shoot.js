@@ -16,7 +16,7 @@ fs.readFile(path, (err, data) => {
 
 module.exports = {
     name: "shoot",
-    description: "Shoot a targeted user.",
+    description: "Shoot a targeted user xD.",
     args: true,
     usage: "<@user>",
     execute(message, args) {
