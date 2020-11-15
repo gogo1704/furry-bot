@@ -6,6 +6,7 @@ module.exports = {
     name: "heal",
     description: "Heal a targeted user.",
     args: true,
+    cooldown: 30,
     usage: "<@user>",
     execute(message, args) {
     	const path = './local/hp.json';
