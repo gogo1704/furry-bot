@@ -3,12 +3,18 @@ module.exports = {
 	description: "Execute command above once again.",
     allowPM: true,
 	execute(message, args) {
-		const prefix = message.client.config.prefix;
+		// defining
+        const prefix = message.client.config.prefix;
 		const regex = new RegExp(`^${prefix}.*`);
-		message.channel.messages.fetch({ limit: 30 }) 
-  			.then(messages => message.client.emit("message", messages.filter(m => m.author.username === message.author.username && regex.test(m.content) && m.content !== `${prefix}up`).first()))
-  			.catch(console.error);
 
-  		
-	}
+        // executing
+        message.channel.messages.fetch({limit: 30}).then(messages => {
+            const msg_history = messages;
+
+            const prev_command = msg_history.filter(m => m.author.username === message.author.username && regex.test(m.content) && m.content !== `${prefix}up`).first();
+
+            if (prev_command === undefined) return message.channel.send("Couldn't find previous command");
+            message.client.emit("message", prev_command);
+        }).catch(console.error);
+    }
 };
