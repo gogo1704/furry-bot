@@ -7,9 +7,6 @@ check(path, string) {
 		return true;
 	}
 	else {
-		fs.writeFile(path, string, {flag: 'wx'}, err => {
-  			if (err) throw err;
-  			return true;
-  		});  
+		fs.writeFileSync(path, string, {flag: 'wx'});  
 	}
 }}
