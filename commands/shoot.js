@@ -3,7 +3,7 @@ const fs = require("fs");
 // We do this instead of require() now!
 const filecheck = require ("../modules/filecheck.js");
 
-let path = '../local/hp.json';
+let path = './local/hp.json';
 filecheck.check(path, '{}');			// 1st arg: path to file, 2nd arg: if file not found, default string
 
 let log;
