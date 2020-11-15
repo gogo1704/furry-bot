@@ -2,6 +2,7 @@
 Simple Discord bot!
 ## TODO: 
 - [ ] Command cooldown
+- [ ] Command permissions
 - [ ] Automatic tester
 - [ ] Remote server
 - [x] Status messages
@@ -10,4 +11,3 @@ Simple Discord bot!
 - https://discordjs.guide
 - https://nodejs.org/en/docs/
 - https://developer.mozilla.org/en-US/docs/Web/javascript
-TEST
