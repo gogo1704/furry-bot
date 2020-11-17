@@ -3,7 +3,7 @@ module.exports = {
 	name: "activity",
 	description: "Sets bot activity!",
 	args: true,
-	usage: `"playing | streaming | listening | watching | competing" "string"`,
+	usage: `playing | streaming | listening | watching | competing <activity>`,
     	allowPM: true,
     	cooldown: 10,
 	execute(message, args) {
