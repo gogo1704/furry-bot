@@ -1,8 +1,5 @@
 const fs = require("fs");
-
-// We do this instead of require() now!
-const filecheck = require ("../modules/filecheck.js");
-
+const filecheck = require("../modules/filecheck.js");
 
 module.exports = {
     name: "shoot",
@@ -12,8 +9,9 @@ module.exports = {
     usage: "<@user>",
     execute(message, args) {
     	const path = './local/hp.json';		
-		filecheck.check(path, '{}');			// 1st arg: path to file, 2nd arg: if file not found, default string
-  		const file = fs.readFileSync(path);
+		// We do this instead of require() now!
+        filecheck.check(path, '{}');			// 1st arg: path to file, 2nd arg: if file not found, default string
+        const file = fs.readFileSync(path);
 		const parsedFile = JSON.parse(file);
         const user = message.mentions.users.first();
         if (user) {
