@@ -1,5 +1,9 @@
 # Nie wolno podawać papugom awokado, rabarbaru, cebuli, czosnku, pora i szczypiorku.
+
 Simple Discord bot!
+
+Remember to run `npm install` to install required packages!
+
 ## TODO: 
 - [x] Command cooldown
 - [ ] Command permissions
