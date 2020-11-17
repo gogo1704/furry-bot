@@ -1,6 +1,6 @@
 module.exports = {
-	name: "roshambo",
-	description: "Rock Paper Scissors!",
+    name: "roshambo",
+    description: "Rock Paper Scissors!",
     usage: "[rock|paper|scissors]",
     allowPM: true,
     cooldown: 3,
