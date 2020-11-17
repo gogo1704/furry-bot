@@ -132,6 +132,19 @@ client.on("guildMemberRemove", member => {
 			.catch(console.error);
 });
 
+// CTRL+C listener
+process.on("SIGINT", () => {
+	console.log('Terminating...');
+	process.exit(0);
+})
+
+
+// Destroy client before exiting
+process.on("exit", () => {
+	client.destroy();
+	console.log('Process terminated');
+})
+
 		
 
 
