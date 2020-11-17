@@ -3,7 +3,8 @@ const Discord = require("discord.js");
 module.exports = {
 	name: "list",
 	description: "Shows the number of online people within roles, bots excluded.",
-    usage: "[role]",
+    	usage: "[role]",
+    	cooldown: 10,
 	execute(message, args) {
         const args_full = args.join(" ");
         if (args_full) {

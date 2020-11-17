@@ -8,6 +8,7 @@ module.exports = {
     name: "shoot",
     description: "Shoot a targeted user.",
     args: true,
+    cooldown: 60,
     usage: "<@user>",
     execute(message, args) {
     	const path = './local/hp.json';		

@@ -7,6 +7,7 @@ module.exports = {
 	name: "write",
 	description: "Write-only notepad that allows to save stuff for later.",
 	usage: "[sentence]",
+	cooldown: 10,
 	execute(message, args) {
 		const path = './local/hp.json';		
 		filecheck.check(path, '{}');			// 1st arg: path to file, 2nd arg: if file not found, default string

@@ -1,6 +1,7 @@
 module.exports = {
     name: "server",
     description: "Shows server informations.",
+    cooldown: 10,
     execute(message, args) {
 		message.channel.send(`Server name: ${message.guild.name}
 Server names acronym: ${message.guild.nameAcronym}
