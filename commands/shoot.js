@@ -16,14 +16,13 @@ module.exports = {
         const user = message.mentions.users.first();
         if (user) {
             if (message.guild.member(user)) {
-				message.channel.send(`You've shot ${user}`);
 				if(parsedFile[user.id]){
 					parsedFile[user.id]--;
 					// w razie czego zapierdolcie to stad 
 				} else {
 					parsedFile[user.id] = 99;	
 				}
-			message.channel.send(`and he has ${parsedFile[user.id]}/100HP!`);
+			message.channel.send(`You shot ${user} and they have ${parsedFile[user.id]}/100HP!`);
 				try {
 					fs.writeFileSync(path, JSON.stringify(parsedFile));
 				} catch(error) {
