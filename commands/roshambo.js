@@ -1,7 +1,7 @@
 module.exports = {
     name: "roshambo",
     description: "Rock Paper Scissors!",
-    usage: "[rock|paper|scissors]",
+    usage: "rock | paper | scissors",
     allowPM: true,
     cooldown: 3,
 	execute(message, args) {
