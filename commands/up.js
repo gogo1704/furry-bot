@@ -2,6 +2,7 @@ module.exports = {
 	name: "up",
 	description: "Execute command above once again.",
     allowPM: true,
+    cooldown: 0,
 	execute(message, args) {
 		// defining
         const prefix = message.client.config.prefix;
