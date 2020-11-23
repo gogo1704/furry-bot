@@ -3,7 +3,6 @@ module.exports = {
 	description: "Disconects bot a bot from a voice channel",
 	execute(message, args) {
 		const connection = message.guild.me.voice.connection
-		console.log(message.guild.me.voice);
 		if(message.guild.me.voice) {
 			connection.disconnect();
 		} else {

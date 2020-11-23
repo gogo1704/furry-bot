@@ -9,7 +9,8 @@ module.exports = {
 		async function play(voiceChannel) {
 			try {
 				//const stream = await fs.createReadStream("meme.mp3");
-				const dispatcher = connection.play(args.join(" "), {volume: 0.5});
+				const dispatcher = connection.play(args.join(" "), {volume: 0.1});
+				//console.log(dispatcher);
 			} catch(error) {
 				console.error(error);
 			}
