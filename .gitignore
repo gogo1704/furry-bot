@@ -1,3 +1,7 @@
 # Specify filepatterns you want git to ignore.
 local/
+<<<<<<< HEAD
 node_modules/
+=======
+node_modules/
+>>>>>>> origin/voice
