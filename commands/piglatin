@@ -1,7 +1,8 @@
 module.exports = {
 	name: "piglatin",
-	description: "translates a sentences to Pig Latin(kind of word game)",
-    allowPM: true,
+	description: "Translates a sentence to Pig Latin.",
+    	allowPM: true,
+	usage: "<text>",
 	execute(message, args) {
         let answer = "";
         const is_vowel = chr => (/[aeiouąęy]/i).test(chr);
