@@ -1,7 +1,7 @@
 module.exports = {
 	name: "appear",
-	description: "Shows wild creatures that appeared on the server.",
-    usage: "<@user|text>",
+	description: "Makes a wild creature appear on the server.",
+    usage: "<creature>",
     allowPM: true,
 	execute(message, args) {
         const word = args.join(" ");
