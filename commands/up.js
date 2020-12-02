@@ -10,9 +10,8 @@ module.exports = {
 
         // executing
         message.channel.messages.fetch({limit: 30}).then(messages => {
-            const msg_history = messages;
 
-            const prev_command = msg_history.filter(m => m.author.username === message.author.username && regex.test(m.content) && m.content !== `${prefix}up`).first();
+            const prev_command = messages.filter(m => m.author.username === message.author.username && regex.test(m.content) && m.content !== `${prefix}up`).first();
 
             if (prev_command === undefined) return message.channel.send("Couldn't find previous command");
             message.client.emit("message", prev_command);

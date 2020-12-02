@@ -9,10 +9,11 @@ module.exports = {
 	usage: "[sentence]",
 	cooldown: 10,
 	execute(message, args) {
-		const path = './local/hp.json';		
-		filecheck.check(path, '{}');			// 1st arg: path to file, 2nd arg: if file not found, default string
+		const path = './local/guestbook.json';		
+		filecheck.check(path, '[]');			// 1st arg: path to file, 2nd arg: if file not found, default string
   		const file = fs.readFileSync(path);
-		const parsedFile = JSON.parse(file);
+		let parsedFile = JSON.parse(file);
+
 		if (!args.length) {
 			let doc = "";
 			for (const note of parsedFile) {
@@ -24,13 +25,13 @@ module.exports = {
 			for (const arg of args) {
 				line += arg+" ";
 			}
+
 			parsedFile.push(line);
 			try {
 				fs.writeFileSync(path, JSON.stringify(parsedFile));
 			} catch(error) {
 				console.error(error);
 			}
-			
 
 		}
 	}
