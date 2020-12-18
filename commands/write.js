@@ -12,7 +12,7 @@ module.exports = {
 		const path = './local/guestbook.json';		
 		filecheck.check(path, '[]');			// 1st arg: path to file, 2nd arg: if file not found, default string
   		const file = fs.readFileSync(path);
-		let parsedFile = JSON.parse(file);
+		const parsedFile = JSON.parse(file);
 
 		if (!args.length) {
 			let doc = "";
