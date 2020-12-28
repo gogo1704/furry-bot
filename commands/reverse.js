@@ -1,7 +1,8 @@
 module.exports = {
 	name: "reverse",
 	description: "Reverse a sentence.",
-    	allowPM: true,
+	allowPM: true,
+	args: true,
 	usage: "<text>",
 	execute(message, args) {
 
