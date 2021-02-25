@@ -47,7 +47,7 @@ module.exports = {
 				const embed = new Discord.MessageEmbed()
 			     .setColor('#ff425f')
 			     .setTitle('Dictionary')
-                 .setDescription(role_find)
+                 .setDescription('AAAAA')
 			     .addField('Huj', true)
                  .addField('Huje', true)
 			     .addField('Huhihi', true)
