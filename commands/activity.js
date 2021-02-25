@@ -43,8 +43,17 @@ module.exports = {
 					message.channel.send("Usage: `'activity set <playing | listening | watching | competing> <activity>`");
 				}
 				break;
-			/* case "list":
-				switch (subarg) {
+			case "list":
+				const embed = new Discord.MessageEmbed()
+			     .setColor('#ff425f')
+			     .setTitle('Dictionary')
+                 .setDescription(role_find)
+			     .addField('Huj', true)
+                 .addField('Huje', true)
+			     .addField('Huhihi', true)
+                 .setTimestamp()
+			     message.channel.send(embed);
+				/* switch (subarg) {
 					case "verbs":
 						message.channel.send(dictionary.verbs.join(", "));
 						break;
@@ -57,8 +66,8 @@ module.exports = {
 					default:
 						message.channel.send("Usage: `'activity list <verbs | adjectives | nouns>`");
 						break;
-					}
-					break; */
+					} */
+					break;
 			case "add":
 				switch (subarg) {
 					case "adjective":
