@@ -1,12 +1,13 @@
 const fs = require("fs");
 module.exports = {
 
-check(path, string) {
+	check(path, string) {
 
-	if (fs.existsSync(path)) {
-		return true;
+		if (fs.existsSync(path)) {
+			return true;
+		}
+		else {
+			fs.writeFileSync(path, string, {flag: "wx"});  
+		}
 	}
-	else {
-		fs.writeFileSync(path, string, {flag: 'wx'});  
-	}
-}}
+}

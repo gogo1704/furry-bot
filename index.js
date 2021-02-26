@@ -76,13 +76,13 @@ client.on("message", message => {
 
 
 	// Check for required arguments
-	if (command.args && !args.length) {
-		let reply = `You didn't provide any arguments!`;
+	check: if (command.args && !args.length) {
 		if (command.usage) {
-			reply += `\nUsage: \`${config.prefix}${command.name} ${command.usage}\``;
-		}
-
-		return message.channel.send(reply);
+			message.channel.send(new Discord.MessageEmbed(command.usage)
+						   .setTitle("You didn't provide any arguments!\n" + command.usage.title));
+			break check;
+		};
+		message.channel.send(new Discord.MessageEmbed().setTitle("You didn't provide any arguments!").setColor("#FF425F"));
 	}
 
 	if (!cooldowns.has(command.name)) {
