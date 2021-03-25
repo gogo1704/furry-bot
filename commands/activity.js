@@ -75,6 +75,5 @@ module.exports = {
 			default:
 				message.channel.send("Usage: `'activity set <playing | listening | watching | competing> <activity>`");
 		};
-	};
 }
 
