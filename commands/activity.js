@@ -32,7 +32,7 @@ module.exports = {
 					message.client.user.setActivity(args.slice(2).join(" "), { type: args[1].toUpperCase() });
 				} else {
 					message.channel.send("Usage: `'activity set <playing | listening | watching | competing> <activity>`");
-				}
+				};
 				break;
 
 			case "list":
@@ -64,7 +64,7 @@ module.exports = {
 					article = "an";
 				} else {
 					article = "a";
-				}
+				};
 
 				let status = article + " " + adjective + " " + noun;
 
@@ -75,5 +75,5 @@ module.exports = {
 			default:
 				message.channel.send("Usage: `'activity set <playing | listening | watching | competing> <activity>`");
 		};
-}
-
+  }
+};
