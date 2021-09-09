@@ -4,6 +4,9 @@ const initMaxSteps = 6;		// Max steps
 
 console.log(`\n[${initSteps}/${initMaxSteps}] Initializing...\n`);
 
+// Changing working directory to the same where index.js is
+process.chdir(__dirname);
+
 // Reading map with require() entries and loading them...
 const req = new Map();
 req.set("Discord", "discord.js");
