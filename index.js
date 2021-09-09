@@ -12,7 +12,7 @@ req.set("defaultConfig", "./default-config.json");
 req.set("config", "./local/config.json");
 
 req.forEach(function (value, key)  {
-	 console.log(`Requiring ${value} as ${key}...`);
+	 console.log(`Requiring ${value}`);
 	 eval(`${key} = require(\"${value}\")`);
 });
 
