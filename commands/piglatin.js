@@ -7,30 +7,45 @@ module.exports = {
 
         let answer = "";
         const is_vowel = chr => (/[aeiouąęy]/i).test(chr);
+    
+        args = args.join("");
 
-        // This is required because fetch() gives promise and we can't really set variable in promise's callback to use later unless it is all a promise
-        async function print() {         
-
-            if (args.toString().startsWith('<@!')) args = await message.client.users.fetch(args.toString().replace(/\W*/gm, '')).then(u => u.username.toString().split(' '));
-            if (args.toString().includes('\n')) args = args.toString().replace(/\n/gi, ',\n,').split(',');
-            
-            for (let i=0; i < args.length; i++) {
-                if (is_vowel(args[i].substring(0,1))){
-                    answer += args[i] + "way ";
-
-                } else if (args[i].includes('\n')) {
-                    answer += args[i];
-
-                } else {
-                    answer += args[i].substring(1) + args[i].substring(0,1) + "ay ";
-                }
-            }
-
-            message.channel.send(answer);
-
+        let mentionRegex = /<@!?(\d+)>/g;
+        let mentionIterator = args.matchAll(mentionRegex);
+        for (match of mentionIterator) {
+            args = args.replace(match[0], ` ${message.client.users.cache.get(match[1]).username} `);
         }
 
-        print();
-        
+
+        let emojiRegex = /<:(\D+):(\d+)>/g;
+        let emojiIterator = args.matchAll(emojiRegex);
+        for (let match of emojiIterator) {
+            args = args.replace(match[0], ` ${match[0]} `);
+        }
+        let emojiUnicodeRegex = /\p{Emoji_Presentation}/gu;
+        let emojiUnicodeIterator = args.matchAll(emojiUnicodeRegex);
+        for (let match of emojiUnicodeIterator) {
+            console.log(match);
+            args = args.replace(match[0], ` ${match[0]} `);
+        }
+        args = args.trim();
+        args = args.split(" ");
+        args = args.filter(word => word !== "");
+        if (args.toString().includes('\n')) args = args.toString().replace(/\n/gi, ',\n,').split(',');
+        for (let word of args) {
+            if (emojiRegex.test(word) || emojiUnicodeRegex.test(word)) {
+                answer += ` ${word} `;    
+            } else if (is_vowel(word[0])) {
+                answer += word + "way ";
+            } else if (word.includes('\n')) {
+                answer += word;
+            } else if (word === "") {
+                answer += "";
+            } else {
+                answer += word.substring(1) + word[0] + "ay ";
+            }
+        }
+
+        message.channel.send(answer);
     }
 };
